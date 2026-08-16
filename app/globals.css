@@ -1,0 +1,155 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-vietnamese), 'Arial', sans-serif;
+  --font-serif: var(--font-serif), 'Georgia', serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: oklch(0.97 0.025 155);
+  --foreground: oklch(0.12 0.03 165); /* Đã chỉnh màu tối đậm để hiện rõ chữ */
+  --card: oklch(0.99 0.01 155);
+  --card-foreground: oklch(0.12 0.03 165);
+  --popover: oklch(0.99 0.01 155);
+  --popover-foreground: oklch(0.12 0.03 165);
+  --primary: oklch(0.25 0.08 165);
+  --primary-foreground: oklch(0.98 0.02 155);
+  --secondary: oklch(0.92 0.04 155);
+  --secondary-foreground: oklch(0.25 0.08 165);
+  --muted: oklch(0.93 0.03 155);
+  --muted-foreground: oklch(0.25 0.04 165); /* Cố định màu chữ phụ thành tối rõ nét */
+  --accent: oklch(0.76 0.15 82);
+  --accent-foreground: oklch(0.22 0.06 80);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.82 0.05 155);
+  --input: oklch(0.82 0.05 155);
+  --ring: oklch(0.62 0.11 165);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+.hero-pattern {
+  background-color: var(--background);
+  background-image: linear-gradient(90deg, transparent 49%, color-mix(in oklab, var(--primary) 5%, transparent) 50%, transparent 51%), linear-gradient(0deg, transparent 49%, color-mix(in oklab, var(--primary) 5%, transparent) 50%, transparent 51%);
+  background-size: 54px 54px;
+}
+
+.slide-pattern {
+  background-color: var(--primary);
+  background-image: linear-gradient(90deg, transparent 48%, color-mix(in oklab, var(--accent) 14%, transparent) 49%, transparent 50%), linear-gradient(0deg, transparent 48%, color-mix(in oklab, var(--accent) 14%, transparent) 49%, transparent 50%);
+  background-size: 36px 36px;
+}
+
+.brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; border: 1px solid color-mix(in oklab, var(--accent) 75%, transparent); color: var(--accent); font-size: 1.25rem; }
+.ornament-diamond { width: .55rem; height: .55rem; border: 1px solid var(--accent); transform: rotate(45deg); }
+.image-frame img, .image-mosaic img { transition: transform 500ms ease; }
+.image-frame:hover img, .image-mosaic img:hover { transform: scale(1.03); }
+.image-mosaic { display: grid; grid-template-columns: 1.15fr .7fr; gap: 1rem; align-items: end; min-height: 28rem; }
+.image-mosaic img { width: 100%; height: 100%; min-height: 17rem; object-fit: cover; border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent); }
+.image-mosaic img:last-child { min-height: 12rem; height: 72%; }
+.play-decor { display: flex; width: 3rem; height: 3rem; align-items: center; justify-content: center; border: 1px solid var(--accent); color: var(--accent); }
+@media (max-width: 640px) { .image-mosaic { min-height: 22rem; gap: .65rem; } .image-mosaic img { min-height: 13rem; } .image-mosaic img:last-child { min-height: 9rem; } }
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Ép toàn bộ các đoạn văn bản hiển thị màu tối rõ nét trên nền sáng */
+  p, span, li, h3 {
+    color: inherit;
+  }
+}
