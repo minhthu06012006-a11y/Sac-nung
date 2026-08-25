@@ -11,7 +11,7 @@ const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono'
 const libreBodoni = Libre_Bodoni({ 
   subsets: ['latin', 'vietnamese'], 
   weight: ['400', '500', '600', '700'], 
-  variable: '--font-serif' // Tên biến này đã khớp 100% với file globals.css
+  variable: '--font-serif'
 })
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#071510',
+  themeColor: '#1A222D', // Cập nhật màu theme trên điện thoại thành Navy Đậm
 }
 
 export default function RootLayout({
@@ -45,11 +45,12 @@ export default function RootLayout({
     <html 
       lang="vi" 
       suppressHydrationWarning 
-      // Ép biến libreBodoni vào class để hiển thị
       className={`${vietnamese.variable} ${geistMono.variable} ${libreBodoni.variable}`}
     >
       <body 
-        className="font-sans antialiased bg-[#071510] text-[#f4eee2]" 
+        // Thay đổi bg-[#071510] thành bg-[#1A222D] (Navy Đậm)
+        // Thay đổi text-[#f4eee2] thành text-[#EAE5D9] (Kem Trắng)
+        className="font-sans antialiased bg-[#1A222D] text-[#EAE5D9]" 
         suppressHydrationWarning
       >
         <Script src="https://unpkg.com/ml5@0.12.2/dist/ml5.min.js" strategy="beforeInteractive" />

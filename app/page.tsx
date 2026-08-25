@@ -17,6 +17,10 @@ export default function HomePage() {
               <p className="mt-8 max-w-xl text-base leading-8 text-primary-foreground/75">
                 Một hành trình tìm hiểu con người Nùng, cộng đồng của những bản làng miền Đông Bắc, nơi tiếng hát, bếp lửa, nếp áo và niềm tin cùng kể một câu chuyện về cội&nbsp;nguồn.
               </p>
+              <div className="mt-9 flex flex-wrap items-center gap-5">
+                <PrimaryButton href="#tim-hieu">Bắt đầu hành trình</PrimaryButton>
+                <AudioHint />
+              </div>
             </div>
 
             <div className="relative min-h-[480px] flex flex-col justify-center">
@@ -45,30 +49,46 @@ export default function HomePage() {
         </section>
       </PagePattern>
 
-      <ContentSection>
-        <div id="tim-hieu" className="grid gap-14 lg:grid-cols-[.75fr_1.25fr]">
-          <div>
-            <SectionKicker>01 / Cộng đồng và vùng đất</SectionKicker>
-            <AccentHeading>Người Nùng<br /><span className="text-accent">là ai?</span></AccentHeading>
-            <DecorativeRule />
-            <p className="text-sm leading-8 text-muted-foreground">
-              Nùng là một trong 54 dân tộc Việt Nam, thuộc nhóm ngôn ngữ Tày–Thái. Cộng đồng cư trú tập trung ở Cao Bằng, Lạng Sơn, Bắc Kạn, Thái Nguyên, Tuyên Quang, Hà Giang và một số tỉnh miền núi phía&nbsp;Bắc.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-2">
-              <MapLabel><MapPin className="mr-2 size-3" /> Cao Bằng</MapLabel>
-              <MapLabel>Lạng Sơn</MapLabel>
-              <MapLabel>Bắc Kạn</MapLabel>
-              <MapLabel>Thái Nguyên</MapLabel>
+      <section className="relative overflow-hidden">
+        {/* Layer 1: Họa tiết thổ cẩm góc Trái (Lớn) */}
+        <img 
+          src="/tho-cam-nen.jpg" 
+          alt="Họa tiết thổ cẩm trang trí" 
+          className="absolute top-1/2 -translate-y-1/2 -left-[300px] md:-left-[450px] z-0 w-[800px] md:w-[1200px] opacity-10 pointer-events-none select-none -rotate-90"
+        />
+        
+        {/* Layer 2: Họa tiết thổ cẩm góc Phải (Nhỏ hơn) */}
+        <img 
+          src="/tho-cam-nen.jpg" 
+          alt="Họa tiết thổ cẩm trang trí" 
+          className="absolute bottom-0 translate-y-1/4 -right-[150px] md:-right-[250px] z-0 w-[400px] md:w-[600px] opacity-10 pointer-events-none select-none rotate-90"
+        />
+        
+        <ContentSection className="relative z-10">
+          <div id="tim-hieu" className="grid gap-14 lg:grid-cols-[.75fr_1.25fr]">
+            <div>
+              <SectionKicker>01 / Cộng đồng và vùng đất</SectionKicker>
+              <AccentHeading>Người Nùng<br /><span className="text-accent">là ai?</span></AccentHeading>
+              <DecorativeRule />
+              <p className="text-sm leading-8 text-muted-foreground">
+                Nùng là một trong 54 dân tộc Việt Nam, thuộc nhóm ngôn ngữ Tày–Thái. Cộng đồng cư trú tập trung ở Cao Bằng, Lạng Sơn, Bắc Kạn, Thái Nguyên, Tuyên Quang, Hà Giang và một số tỉnh miền núi phía&nbsp;Bắc.
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                <MapLabel><MapPin className="mr-2 size-3" /> Cao Bằng</MapLabel>
+                <MapLabel>Lạng Sơn</MapLabel>
+                <MapLabel>Bắc Kạn</MapLabel>
+                <MapLabel>Thái Nguyên</MapLabel>
+              </div>
+            </div>
+            <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
+              <InfoLine label="Ngôn ngữ">Nhiều nhóm địa phương sử dụng các phương ngữ Nùng khác nhau; tiếng nói gần gũi với Tày và các ngôn ngữ Tày–Thái.</InfoLine>
+              <InfoLine label="Sinh kế">Canh tác lúa nước ở thung lũng, ruộng bậc thang; trồng ngô, cây màu, chăn nuôi và nghề thủ công.</InfoLine>
+              <InfoLine label="Nhà ở và bản làng">Bản thường nằm ven suối hoặc trong thung lũng. Nhà sàn, không gian bếp và sân phơi gắn với đời sống gia đình.</InfoLine>
+              <InfoLine label="Cộng đồng">Quan hệ họ hàng, láng giềng và tinh thần tương trợ giúp duy trì nếp sống bản làng qua nhiều thế hệ.</InfoLine>
             </div>
           </div>
-          <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
-            <InfoLine label="Ngôn ngữ">Nhiều nhóm địa phương sử dụng các phương ngữ Nùng khác nhau; tiếng nói gần gũi với Tày và các ngôn ngữ Tày–Thái.</InfoLine>
-            <InfoLine label="Sinh kế">Canh tác lúa nước ở thung lũng, ruộng bậc thang; trồng ngô, cây màu, chăn nuôi và nghề thủ công.</InfoLine>
-            <InfoLine label="Nhà ở và bản làng">Bản thường nằm ven suối hoặc trong thung lũng. Nhà sàn, không gian bếp và sân phơi gắn với đời sống gia đình.</InfoLine>
-            <InfoLine label="Cộng đồng">Quan hệ họ hàng, láng giềng và tinh thần tương trợ giúp duy trì nếp sống bản làng qua nhiều thế hệ.</InfoLine>
-          </div>
-        </div>
-      </ContentSection>
+        </ContentSection>
+      </section>
 
       <section className="bg-secondary">
         <ContentSection>
@@ -152,13 +172,22 @@ export default function HomePage() {
 
       <HeaderBand>Trải nghiệm đang được chuẩn bị</HeaderBand>
       
-      <section className="bg-accent px-5 py-16">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
+      <section className="relative bg-accent px-5 py-16 overflow-hidden">
+        <div 
+          className="absolute inset-0 z-0 opacity-20 mix-blend-multiply pointer-events-none"
+          style={{ 
+            backgroundImage: "url('/hoa-van-tho-cam.jpg')", 
+            backgroundRepeat: "repeat",
+            backgroundSize: "200px" 
+          }}
+        />
+        
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[.25em] text-accent-foreground/70">Tính năng tương tác</p>
-            <h2 className="mt-3 font-serif text-4xl text-accent-foreground md:text-5xl">Thử khoác lên mình<br />một sắc chàm dân&nbsp;tộc</h2>
+            <h2 className="mt-3 font-serif text-4xl text-accent-foreground md:text-5xl drop-shadow-sm">Thử khoác lên mình<br />một sắc chàm dân&nbsp;tộc</h2>
           </div>
-          <Link href="/thay-do" className="inline-flex items-center gap-3 self-start border border-accent-foreground/30 bg-accent-foreground px-7 py-4 font-bold text-accent md:self-auto">
+          <Link href="/thay-do" className="inline-flex items-center gap-3 self-start border border-accent-foreground/30 bg-accent-foreground px-7 py-4 font-bold text-accent md:self-auto hover:scale-105 transition-transform shadow-xl">
             Mở phòng thay đồ <ArrowRight />
           </Link>
         </div>
