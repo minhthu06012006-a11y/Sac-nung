@@ -39,7 +39,7 @@ export default function ThayDoPage() {
                   Phòng <span className="text-accent">thay đồ ảo AR</span>
                 </h1>
                 <p className="mt-3 max-w-2xl text-sm md:text-base text-primary-foreground/70 font-light">
-                  Đứng trước webcam và sử dụng ngón tay trỏ để tương tác chọn trang phục truyền thống của dân tộc Nùng ngay trên màn hình.
+                  Đứng trước webcam và giơ bàn tay để tương tác chọn trang phục truyền thống của dân tộc Nùng ngay trên màn hình, chấm đỏ trên bàn tay di chuyển đến ô trang phục nào thì trang phục đó sẽ được ướm lên người dùng.
                 </p>
               </div>
               
