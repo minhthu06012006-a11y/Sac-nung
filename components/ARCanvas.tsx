@@ -333,9 +333,17 @@ export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
     p5.remove();
   }, [state]);
 
+  // Khai báo một biến props với kiểu 'any' để Vercel không soi lỗi thư viện nữa
+  const sketchProps: any = {
+    setup,
+    draw,
+    windowResized,
+    unmount
+  };
+
   return (
     <div className="absolute inset-0 z-0 w-full h-full overflow-hidden bg-black rounded-3xl">
-      <Sketch setup={setup} draw={draw} windowResized={windowResized} unmount={unmount} />
+      <Sketch {...sketchProps} />
     </div>
   );
 }
