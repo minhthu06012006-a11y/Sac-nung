@@ -12,7 +12,6 @@ interface ARCanvasProps {
 }
 
 export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
-  // GÓI TOÀN BỘ BIẾN VÀO "KÉT SẮT" ĐỂ KHÔNG BỊ MẤT DỮ LIỆU KHI REACT TẢI LẠI TRANG
   const state = useRef({
     capture: null as any,
     poses: [] as any[],
@@ -34,7 +33,6 @@ export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
   useEffect(() => { onCaptureRef.current = onCapture; }, [onCapture]);
   useEffect(() => { isPausedRef.current = isPaused; }, [isPaused]);
 
-  // Xóa camera khi người dùng rời khỏi trang
   useEffect(() => {
     return () => {
       document.querySelectorAll('video').forEach((vid) => {
@@ -98,7 +96,6 @@ export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
         drawH = p5.height;
       }
 
-      // VẼ CAMERA
       p5.push(); 
       p5.translate(p5.width / 2, p5.height / 2);
       p5.scale(-1, 1); 
@@ -106,7 +103,6 @@ export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
       p5.image(state.capture, 0, 0, drawW, drawH);
       p5.pop(); 
 
-      // Nếu đang chụp ảnh thì dừng tính toán AI (không vẽ đồ lên nữa)
       if (isPausedRef.current) return;
 
       const scaleX = drawW / state.capture.width;
@@ -139,23 +135,25 @@ export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
             let targetW, targetH, targetYOffset;
             let imgRatio = currentImg.height / currentImg.width;
 
+            // ==========================================
+            // LOGIC FINAL: TÁCH BIỆT HOÀN TOÀN DỌC VÀ NGANG
+            // ==========================================
+            
+            // 1. CHIỀU DỌC: Khóa cứng theo Vai. Dù bề ngang có kéo giãn cỡ nào, quai áo vẫn CỐ ĐỊNH trên vai!
+            targetH = shoulderWidth * 2.8 * imgRatio;
+            targetYOffset = targetH * 0.35; // Điểm neo quai áo
+
+            // 2. CHIỀU NGANG: Ép dãn bành ra hai bên để che kín form body
             if (leftHip && rightHip && leftHip.score > 0.15 && rightHip.score > 0.15) {
                 let lHipCoord = getScreenCoord(leftHip);
                 let rHipCoord = getScreenCoord(rightHip);
-                
-                let midHipX = (lHipCoord.x + rHipCoord.x) / 2;
-                let midHipY = (lHipCoord.y + rHipCoord.y) / 2;
-                
                 let hipWidth = p5.dist(lHipCoord.x, lHipCoord.y, rHipCoord.x, rHipCoord.y);
-                let torsoHeight = p5.dist(centerX, centerY, midHipX, midHipY);
-
-                targetW = Math.max(shoulderWidth * 3.5, hipWidth * 2.2); 
-                targetH = torsoHeight * 3.8; 
-                targetYOffset = targetH * 0.35; 
+                
+                // Giãn ngang linh hoạt theo độ rộng hông hoặc vai
+                targetW = Math.max(shoulderWidth * 4.5, hipWidth * 3.3); 
             } else {
-                targetW = shoulderWidth * 3.8; 
-                targetH = targetW * imgRatio * 0.65; 
-                targetYOffset = targetH * 0.35; 
+                // Đứng khuất hông: giãn ngang tối đa theo vai
+                targetW = shoulderWidth * 4.7; 
             }
 
             if (state.smoothedW === 0) {
@@ -177,7 +175,6 @@ export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
           }
         }
 
-        // Tương tác tay
         let leftWrist = keypoints.find((k: any) => k.part === 'leftWrist');
         let rightWrist = keypoints.find((k: any) => k.part === 'rightWrist');
         let leftElbow = keypoints.find((k: any) => k.part === 'leftElbow');
@@ -240,7 +237,6 @@ export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
             }
         }
 
-        // Vẽ 10 Nút bấm (2 cột x 5 hàng)
         let btnSize = 65; 
         let btnSpacingX = 80; 
         let btnSpacingY = 75; 
@@ -333,7 +329,6 @@ export default function ARCanvas({ onCapture, isPaused }: ARCanvasProps) {
     p5.remove();
   }, [state]);
 
-  // Khai báo một biến props với kiểu 'any' để Vercel không soi lỗi thư viện nữa
   const sketchProps: any = {
     setup,
     draw,
